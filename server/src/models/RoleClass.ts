@@ -1,0 +1,3 @@
+interface RoleClass {
+  value: String;
+}
