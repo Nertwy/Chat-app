@@ -43,6 +43,7 @@
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="text-sm lg:flex-grow">
         <a
+          @click.prevent="socketGEt"
           href="#responsive-header"
           class="
             block
@@ -92,11 +93,22 @@
 import { defineComponent } from "@vue/runtime-core";
 import router from "vue-router";
 import { User } from "../interface/User";
+import io from "socket.io-client";
 export default defineComponent({
   data() {
     return {
       user: this.$route.params as unknown as User,
     };
+  },
+  mounted() {},
+  methods: {
+    socketGEt() {
+      const socket = io("http://localhost:5000/auth/rooms");
+      console.log(socket);
+      socket.on("connect", () => {
+        console.log(this.socket.id);
+      });
+    },
   },
 });
 </script>

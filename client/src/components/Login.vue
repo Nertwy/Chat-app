@@ -121,7 +121,7 @@ export default defineComponent({
           });
           if (req.status === 200) {
             const usersInfo: User = await req.json();
-            console.log(usersInfo[0]);
+            // console.log(usersInfo[0]);
             this.$router.push({
               name: "home",
               params: usersInfo[0],

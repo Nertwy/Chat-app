@@ -3,6 +3,7 @@ import authController from "./authController";
 import { check } from "express-validator";
 import { authMiddleware } from "./middleware/Auth";
 import {roleMiddleWare} from "./middleware/roleMiddleWare";
+import socketController from './controller/socketController'
 const router = Router();
 
 router.post(
@@ -18,5 +19,5 @@ router.post(
 );
 router.post("/login", authController.login);
 router.get("/users", roleMiddleWare(["ADMIN"]), authController.getUsers);
-
+router.get('/rooms',socketController.socketConnect)
 export default router;
